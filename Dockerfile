@@ -10,8 +10,11 @@ WORKDIR /home/node
 COPY . /home/node
 
 
-RUN yarn install --production \
+RUN npm ci \
     && npm run build \
+    && npm prune --production
+
+
 # ---
 FROM node:16.8-alpine3.11
 
